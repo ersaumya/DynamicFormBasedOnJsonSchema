@@ -1,0 +1,69 @@
+[
+    {
+        "ID":"FirstName",
+        "Label":"First Name",
+        "Type":"input",
+        "Value":""
+    },
+    {
+        "ID": "LastName",
+        "Label": "Last Name",
+        "Type": "input",
+        "Value": ""
+    },
+    {
+        "ID": "MobileNo",
+        "Label": "Mobile No",
+        "Type": "input",
+        "Value": ""
+    },
+    {
+        "ID": "EmailId",
+        "Label": "Email Id",
+        "Type": "input",
+        "Value": ""
+    },
+    {
+        "ID": "DOB",
+        "Label": "DOB",
+        "Type": "date",
+        "Value": ""
+    },
+    {
+        "ID": "Gender",
+        "Label": "Gender",
+        "Type": "radio",
+        "Value": "Male,Female,Others"
+    },
+    {
+        "ID": "Skills",
+        "Label": "Skills",
+        "Type": "checkbox",
+        "Value": "C#,Angular,HTML5,CSS3,MongoDb"
+    },
+    {
+        "ID": "Address",
+        "Label": "Address",
+        "Type": "textarea",
+        "Value": ""
+    },
+    {
+        "ID": "State",
+        "Label": "State",
+        "Type": "select",
+        "Value": "Odisha,Karnataka,Maharastra,Rajastan,UP,MP"
+    },
+    {
+        "ID": "City",
+        "Label": "City",
+        "Type": "select",
+        "Value": "Cuttack,Pune,Bhopal,Bangalore,Lucknow,Jaipur"
+    },
+    {
+        "ID": "Pincode",
+        "Label": "Pin Code",
+        "Type": "input",
+        "Value": ""
+    }
+
+]
