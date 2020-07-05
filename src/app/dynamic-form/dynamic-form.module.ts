@@ -1,3 +1,4 @@
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -8,7 +9,7 @@ import { RegisterFormComponent } from './Component/register-form/register-form.c
 
 @NgModule({
   declarations: [RegisterFormComponent],
-  imports: [CommonModule, HttpClientModule, DynamicFormRoutingModule],
+  imports: [CommonModule,FormsModule,ReactiveFormsModule, HttpClientModule, DynamicFormRoutingModule],
   exports: [RegisterFormComponent]
 })
 export class DynamicFormModule {}

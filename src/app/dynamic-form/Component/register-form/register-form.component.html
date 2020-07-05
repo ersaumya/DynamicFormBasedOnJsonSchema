@@ -5,7 +5,8 @@
   <a class="navbar-brand">Registration Form</a>
 </nav>
 <section>
-  <form id="">
+    <div class="col-md-12">{{registerForm.value | json}}</div>
+  <form id="form" [formGroup]="registerForm">
     <div class="container">
       <div class="col-md-12" *ngFor="let control of dynamicFormArray">
         <div [ngSwitch]="control.Type">
@@ -15,7 +16,7 @@
               <label>{{ control.Label }}</label>
             </div>
             <div class="col-md-6">
-              <input type="text" class="form-control" />
+              <input type="text" [formControlName]="control.ID" class="form-control" />
             </div>
           </div>
           <!-- end case 1 input -->
@@ -25,7 +26,7 @@
               <label>{{ control.Label }}</label>
             </div>
             <div class="col-md-6">
-              <input type="date" class="form-control" />
+              <input type="date" [formControlName]="control.ID"  class="form-control" />
             </div>
           </div>
           <!-- end case 2 date -->
@@ -35,9 +36,9 @@
               <label>{{ control.Label }}</label>
             </div>
             <div class="col-md-6">
-              <label class="radio" *ngFor="let val of control.Value.split(',')">
+              <label class="radio"   *ngFor="let val of control.Value.split(',')">
                 <input
-                  type="radio"
+                  type="radio" [formControlName]="control.ID"
                   name="{{ control.ID }}"
                   value="{{ val }}"
                 />{{ val }}
@@ -52,11 +53,11 @@
             </div>
             <div class="col-md-6">
               <label
-                class="checkbox"
+                class="checkbox" 
                 *ngFor="let val of control.Value.split(',')"
               >
                 <input
-                  type="checkbox"
+                  type="checkbox" [formControlName]="control.ID" 
                   name="{{ control.ID }}"
                   value="{{ val }}"
                 />{{ val }}
@@ -70,7 +71,7 @@
               <label>{{ control.Label }}</label>
             </div>
             <div class="col-md-6">
-              <select class="form-control">
+              <select class="form-control" [formControlName]="control.ID" >
                 <option value="-1">Select</option>
                 <option
                   *ngFor="let val of control.Value.split(',')"
@@ -87,13 +88,13 @@
               <label>{{ control.Label }}</label>
             </div>
             <div class="col-md-6">
-              <textarea class="form-control" row="4"></textarea>
+              <textarea [formControlName]="control.ID"  class="form-control" row="4"></textarea>
             </div>
           </div>
           <!-- end case 6 textarea -->
           <div *ngSwitchCase="'button'" class="form-group row">
             <div class="col-md-4">
-              <button type="submit" class="btn btn-primary">
+              <button type="submit"  class="btn btn-primary">
                 {{ control.Label }}
               </button>
             </div>
