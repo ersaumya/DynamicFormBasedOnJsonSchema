@@ -5,8 +5,8 @@
   <a class="navbar-brand">Registration Form</a>
 </nav>
 <section>
-    <div class="col-md-12">{{registerForm.value | json}}</div>
-  <form id="form" [formGroup]="registerForm">
+  <div class="col-md-12">{{ registerForm.value | json }}</div>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div class="container">
       <div class="col-md-12" *ngFor="let control of dynamicFormArray">
         <div [ngSwitch]="control.Type">
@@ -16,7 +16,24 @@
               <label>{{ control.Label }}</label>
             </div>
             <div class="col-md-6">
-              <input type="text" [formControlName]="control.ID" class="form-control" />
+              <input
+                type="text"
+                [formControlName]="control.ID"
+                class="form-control"
+              />
+              <div
+                class="alert alert-danger"
+                *ngIf="
+                  registerForm.get(control.ID).invalid &&
+                  (registerForm.get(control.ID).touched ||
+                    registerForm.get(control.ID).dirty)
+                "
+              >
+                {{ control.Label }} is required.
+              </div>
+              <!-- <div *ngIf="registerForm.get(control.ID).dirty || registerForm.get(control.ID).touched">
+                  <small *ngIf="registerForm.get(control.ID).valid">{{control.Label}} is required.</small>
+              </div> -->
             </div>
           </div>
           <!-- end case 1 input -->
@@ -26,7 +43,21 @@
               <label>{{ control.Label }}</label>
             </div>
             <div class="col-md-6">
-              <input type="date" [formControlName]="control.ID"  class="form-control" />
+              <input
+                type="date"
+                [formControlName]="control.ID"
+                class="form-control"
+              />
+              <div
+                class="alert alert-danger"
+                *ngIf="
+                  registerForm.get(control.ID).invalid &&
+                  (registerForm.get(control.ID).touched ||
+                    registerForm.get(control.ID).dirty)
+                "
+              >
+                {{ control.Label }} is required.
+              </div>
             </div>
           </div>
           <!-- end case 2 date -->
@@ -36,12 +67,23 @@
               <label>{{ control.Label }}</label>
             </div>
             <div class="col-md-6">
-              <label class="radio"   *ngFor="let val of control.Value.split(',')">
+              <label class="radio" *ngFor="let val of control.Value.split(',')">
                 <input
-                  type="radio" [formControlName]="control.ID"
+                  type="radio"
+                  [formControlName]="control.ID"
                   name="{{ control.ID }}"
                   value="{{ val }}"
                 />{{ val }}
+                <div
+                  class="alert alert-danger"
+                  *ngIf="
+                    registerForm.get(control.ID).invalid &&
+                    (registerForm.get(control.ID).touched ||
+                      registerForm.get(control.ID).dirty)
+                  "
+                >
+                  {{ control.Label }} is required.
+                </div>
               </label>
             </div>
           </div>
@@ -53,15 +95,26 @@
             </div>
             <div class="col-md-6">
               <label
-                class="checkbox" 
+                class="checkbox"
                 *ngFor="let val of control.Value.split(',')"
               >
                 <input
-                  type="checkbox" [formControlName]="control.ID" 
+                  type="checkbox"
+                  [formControlName]="control.ID"
                   name="{{ control.ID }}"
                   value="{{ val }}"
                 />{{ val }}
               </label>
+              <div
+                class="alert alert-danger"
+                *ngIf="
+                  registerForm.get(control.ID).invalid &&
+                  (registerForm.get(control.ID).touched ||
+                    registerForm.get(control.ID).dirty)
+                "
+              >
+                {{ control.Label }} is required.
+              </div>
             </div>
           </div>
           <!-- end case 4 checkbox -->
@@ -71,7 +124,7 @@
               <label>{{ control.Label }}</label>
             </div>
             <div class="col-md-6">
-              <select class="form-control" [formControlName]="control.ID" >
+              <select class="form-control" [formControlName]="control.ID">
                 <option value="-1">Select</option>
                 <option
                   *ngFor="let val of control.Value.split(',')"
@@ -79,6 +132,16 @@
                   >{{ val }}</option
                 >
               </select>
+              <div
+                class="alert alert-danger"
+                *ngIf="
+                  registerForm.get(control.ID).invalid &&
+                  (registerForm.get(control.ID).touched ||
+                    registerForm.get(control.ID).dirty)
+                "
+              >
+                {{ control.Label }} is required.
+              </div>
             </div>
           </div>
           <!--end case 5 select -->
@@ -88,13 +151,31 @@
               <label>{{ control.Label }}</label>
             </div>
             <div class="col-md-6">
-              <textarea [formControlName]="control.ID"  class="form-control" row="4"></textarea>
+              <textarea
+                [formControlName]="control.ID"
+                class="form-control"
+                row="4"
+              ></textarea>
+              <div
+                class="alert alert-danger"
+                *ngIf="
+                  registerForm.get(control.ID).invalid &&
+                  (registerForm.get(control.ID).touched ||
+                    registerForm.get(control.ID).dirty)
+                "
+              >
+                {{ control.Label }} is required.
+              </div>
             </div>
           </div>
           <!-- end case 6 textarea -->
           <div *ngSwitchCase="'button'" class="form-group row">
             <div class="col-md-4">
-              <button type="submit"  class="btn btn-primary">
+              <button
+                type="submit"
+                [disabled]="!registerForm.valid"
+                class="btn btn-primary"
+              >
                 {{ control.Label }}
               </button>
             </div>
