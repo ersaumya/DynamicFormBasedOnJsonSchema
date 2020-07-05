@@ -33,19 +33,13 @@
         "ID": "Gender",
         "Label": "Gender",
         "Type": "radio",
-        "Value": "Male,Female,Others"
+        "Value": "Male,Female"
     },
     {
         "ID": "Skills",
         "Label": "Skills",
         "Type": "checkbox",
         "Value": "C#,Angular,HTML5,CSS3,MongoDb"
-    },
-    {
-        "ID": "Address",
-        "Label": "Address",
-        "Type": "textarea",
-        "Value": ""
     },
     {
         "ID": "State",
@@ -60,10 +54,21 @@
         "Value": "Cuttack,Pune,Bhopal,Bangalore,Lucknow,Jaipur"
     },
     {
-        "ID": "Pincode",
-        "Label": "Pin Code",
-        "Type": "input",
-        "Value": ""
+      "ID": "Pincode",
+      "Label": "Pin Code",
+      "Type": "input",
+      "Value": ""
+    },
+    {
+      "ID": "Address",
+      "Label": "Address",
+      "Type": "textarea",
+      "Value": ""
+    },
+    {
+      "ID": "Register",
+      "Label": "Register",
+      "Type": "button",
+      "Value": ""
     }
-
 ]

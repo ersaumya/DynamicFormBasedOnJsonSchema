@@ -1,1 +1,105 @@
-<p>register-form works!</p>
+<nav
+  class="navbar navbar-expand-lg"
+  style="background-color: #7952b3; color: aliceblue;"
+>
+  <a class="navbar-brand">Registration Form</a>
+</nav>
+<section>
+  <form id="">
+    <div class="container">
+      <div class="col-md-12" *ngFor="let control of dynamicFormArray">
+        <div [ngSwitch]="control.Type">
+          <!-- case 1 input -->
+          <div *ngSwitchCase="'input'" class="form-group row">
+            <div class="col-md-4 font-weight-bold">
+              <label>{{ control.Label }}</label>
+            </div>
+            <div class="col-md-6">
+              <input type="text" class="form-control" />
+            </div>
+          </div>
+          <!-- end case 1 input -->
+          <!-- case 2 date -->
+          <div *ngSwitchCase="'date'" class="form-group row">
+            <div class="col-md-4 font-weight-bold">
+              <label>{{ control.Label }}</label>
+            </div>
+            <div class="col-md-6">
+              <input type="date" class="form-control" />
+            </div>
+          </div>
+          <!-- end case 2 date -->
+          <!-- case 3 radio -->
+          <div *ngSwitchCase="'radio'" class="form-group row">
+            <div class="col-md-4 font-weight-bold">
+              <label>{{ control.Label }}</label>
+            </div>
+            <div class="col-md-6">
+              <label class="radio" *ngFor="let val of control.Value.split(',')">
+                <input
+                  type="radio"
+                  name="{{ control.ID }}"
+                  value="{{ val }}"
+                />{{ val }}
+              </label>
+            </div>
+          </div>
+          <!-- end case 3 radio -->
+          <!-- case 4 checkbox -->
+          <div *ngSwitchCase="'checkbox'" class="form-group row">
+            <div class="col-md-4 font-weight-bold">
+              <label>{{ control.Label }}</label>
+            </div>
+            <div class="col-md-6">
+              <label
+                class="checkbox"
+                *ngFor="let val of control.Value.split(',')"
+              >
+                <input
+                  type="checkbox"
+                  name="{{ control.ID }}"
+                  value="{{ val }}"
+                />{{ val }}
+              </label>
+            </div>
+          </div>
+          <!-- end case 4 checkbox -->
+          <!-- case 5 select -->
+          <div *ngSwitchCase="'select'" class="form-group row">
+            <div class="col-md-4 font-weight-bold">
+              <label>{{ control.Label }}</label>
+            </div>
+            <div class="col-md-6">
+              <select class="form-control">
+                <option value="-1">Select</option>
+                <option
+                  *ngFor="let val of control.Value.split(',')"
+                  value="{{ val }}"
+                  >{{ val }}</option
+                >
+              </select>
+            </div>
+          </div>
+          <!--end case 5 select -->
+          <!--  case 6 textarea -->
+          <div *ngSwitchCase="'textarea'" class="form-group row">
+            <div class="col-md-4 font-weight-bold">
+              <label>{{ control.Label }}</label>
+            </div>
+            <div class="col-md-6">
+              <textarea class="form-control" row="4"></textarea>
+            </div>
+          </div>
+          <!-- end case 6 textarea -->
+          <div *ngSwitchCase="'button'" class="form-group row">
+            <div class="col-md-4">
+              <button type="submit" class="btn btn-primary">
+                {{ control.Label }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</section>
