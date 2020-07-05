@@ -1,0 +1,21 @@
+<div [formGroup]="form">
+  <label [attr.for]="detail.key">{{detail.label}}</label>
+
+  <div [ngSwitch]="detail.controlType">
+
+    <input *ngSwitchCase="'textbox'" [formControlName]="detail.key"
+            [id]="detail.key" [type]="detail.type">
+    <input *ngSwitchCase="'checkbox'" [formControlName]="detail.key"
+            [id]="detail.key" [type]="detail.type">
+    <input *ngSwitchCase="'radio'" [formControlName]="detail.key"
+            [id]="detail.key" [type]="detail.type">
+    <input *ngSwitchCase="'textarea'" [formControlName]="detail.key"
+            [id]="detail.key" [type]="detail.type">
+    <select [id]="detail.key" *ngSwitchCase="'dropdown'" [formControlName]="detail.key">
+      <option *ngFor="let opt of detail.options" [value]="opt.key">{{opt.value}}</option>
+    </select>
+
+  </div>
+
+  <div class="errorMessage" *ngIf="!isValid">{{detail.label}} is required</div>
+</div>
